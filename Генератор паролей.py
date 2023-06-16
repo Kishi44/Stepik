@@ -35,12 +35,11 @@ if need_difsym == 'Да':
 
 
 def generate_password(length, chars):
-    li_pas = []
-    for i in range(count_pas):
-        for _ in range(length):
-            li_pas[i] += choice(chars)
+    li_pas = ''
+    for _ in range(length):
+        li_pas += choice(chars)
 
     return li_pas
 
-
-print(generate_password(len_pas, chars))
+for _ in range(count_pas):
+    print(generate_password(len_pas, chars))
