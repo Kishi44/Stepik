@@ -14,15 +14,46 @@ answer = ''
 
 if action == 'д' and lang == 'en':
     for el in text:
-        if el.isalpha():
+        if el in eng_lower_alphabet:
             cur_n = ord("a") + (ord(el) - ord("a") + 26 - step) % 26
             answer += chr(cur_n)
+        elif el in eng_upper_alphabet:
+            cur_n = ord("A") + (ord(el) - ord("A") + 26 - step) % 26
+            answer += chr(cur_n)
+
         else: answer += el
 
 if action == 'д' and lang == 'ru':
     for el in text:
-        cur_n = ord("а") + (ord(el) - ord("а") + 32 - step) % 32
-        print(chr(cur_n), end="")
+        if el in rus_lower_alphabet:
+            cur_n = ord("а") + (ord(el) - ord("а") + 32 - step) % 32
+            answer += chr(cur_n)
+        elif el in rus_upper_alphabet:
+            cur_n = ord("А") + (ord(el) - ord("А") + 32 - step) % 32
+            answer += chr(cur_n)
+        else: answer += el
 
+
+if action == 'ш' and lang == 'ru':
+    for el in text:
+        if el in rus_lower_alphabet:
+            cur_n = ord("а") + (ord(el) - ord("а") + 32 + step) % 32
+            answer += chr(cur_n)
+        elif el in rus_upper_alphabet:
+            cur_n = ord("А") + (ord(el) - ord("А") + 32 + step) % 32
+            answer += chr(cur_n)
+        else: answer += el
+
+if action == 'ш' and lang == 'en':
+    for el in text:
+        if el in eng_lower_alphabet:
+            cur_n = ord("a") + (ord(el) - ord("a") + 26 + step) % 26
+            answer += chr(cur_n)
+        elif el in eng_upper_alphabet:
+            cur_n = ord("A") + (ord(el) - ord("A") + 26 + step) % 26
+            answer += chr(cur_n)
+
+        else: answer += el
 
 print(answer)
+
