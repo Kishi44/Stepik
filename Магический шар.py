@@ -10,7 +10,7 @@ answers = [
 print('Привет Мир, я магический шар, и я знаю ответ на любой твой вопрос.')
 
 user_name = input('Как Вас зовут? ')
-print(f'Привет {user_name}')
+print(f'Привет, {user_name}')
 
 while True:
     question = input('Задай свой вопрос: ')
