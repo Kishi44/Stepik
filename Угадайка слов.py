@@ -203,15 +203,21 @@ def play(word = get_word()):
         if not user_try.isalpha():
             print('Нужно ввсети букву или слово! попробуйте еще раз!')
             continue
+
+
+        if user_try in guessed_letters or user_try in guessed_words:
+            print(f'Вы уже пробовали {user_try}\n')
+            continue
+
         if len(user_try) > 1:
+            guessed_words.append(user_try)
             if user_try == word:
-                guessed = True
+                word_completion = word
             else:
                 tries -= 1
-                print('Не верно!\n')
-                print(display_hangman(tries))
-                continue
+                print('Не угадали')
         elif len(user_try) == 1:
+            guessed_letters.append(user_try)
             if user_try in word:
                 for i in range(len(word)):
                     if word[i] == user_try:
@@ -229,7 +235,7 @@ def play(word = get_word()):
 
     if guessed and tries > 0:
         print()
-        print(word_completion)
+        print(word)
         print('\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
         print('\nВы угадали! Поздравляем с победой!')
         print('\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
