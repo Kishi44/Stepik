@@ -199,7 +199,7 @@ def play(word = get_word()):
     print('**********************************************\n')
 
     while tries != 0 and guessed == False:
-        user_try = input('Введите ответ целиком или букву: \n')
+        user_try = input('Введите ответ целиком или букву: \n').upper()
         if not user_try.isalpha():
             print('Нужно ввсети букву или слово! попробуйте еще раз!')
             continue
@@ -215,13 +215,24 @@ def play(word = get_word()):
             if user_try in word:
                 for i in range(len(word)):
                     if word[i] == user_try:
-                        word_completion[i] = user_try
+                        word_completion = word_completion[:i] + user_try + word_completion[i+1:]
             else:
+                tries -= 1
+                print('Такой буквы нет')
+        if word_completion == word:
+            guessed = True
+        else:
+            print(display_hangman(tries))
+            print(word_completion)
 
 
 
     if guessed and tries > 0:
-        print('Вы угадали! Поздравляем с победой!')
+        print()
+        print(word_completion)
+        print('\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+        print('\nВы угадали! Поздравляем с победой!')
+        print('\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
     else:
         print('Вы проиграли!\n')
         print(display_hangman(0))
